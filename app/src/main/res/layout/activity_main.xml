@@ -78,32 +78,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:columnCount="3"
         android:gravity="center"
-        android:rowCount="2"
-        android:padding="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/minMaxTempText">
+        app:layout_constraintTop_toBottomOf="@id/minMaxTempText"
+        app:layout_constraintVertical_bias="0.5"
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:padding="16dp"
+        android:columnCount="2"
+        android:rowCount="3"
+        android:alignmentMode="alignMargins"
+        android:rowOrderPreserved="true">
 
         <!-- Grid item for Sunrise -->
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:visibility="visible"
+            tools:visibility="visible">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_cloudy_weather" />
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/sunrise" />
 
             <TextView
                 android:id="@+id/sunriseText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
                 android:gravity="center"
                 android:text="Sunrise\n5:30am"
                 android:textColor="@android:color/white"
@@ -116,18 +127,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:visibility="visible"
+            tools:visibility="visible">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_cloudy_weather" />
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/sunset" />
 
             <TextView
+                android:id="@+id/sunsetText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
                 android:gravity="center"
-                android:text="Sunrise\n5:30am"
+                android:text="Sunset\n5:30am"
                 android:textColor="@android:color/white"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -137,19 +153,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:visibility="visible"
+            tools:visibility="visible">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_cloudy_weather" />
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/windy" />
 
             <TextView
                 android:id="@+id/wind"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Sunrise\n5:30am"
+                android:padding="10dp"
+                android:text="Wind\n5:30am"
                 android:textColor="@android:color/white"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -163,19 +183,22 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:visibility="visible">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_cloudy_weather" />
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/pressure" />
 
             <TextView
                 android:id="@+id/pressure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Sunrise\n5:30am"
+                android:padding="10dp"
+                android:text="Pressure\n5:30am"
                 android:textColor="@android:color/white"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -185,19 +208,22 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:visibility="visible">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_cloudy_weather" />
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/hygrometer" />
 
             <TextView
                 android:id="@+id/humidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Sunrise\n5:30am"
+                android:padding="10dp"
+                android:text="Humidity\n5:30am"
                 android:textColor="@android:color/white"
                 android:textSize="14sp" />
 
@@ -212,19 +238,21 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_cloudy_weather" />
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/airpollution" />
 
             <TextView
-                android:id="@+id/createdBy"
+                android:id="@+id/pollution"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Sunrise\n5:30am"
+                android:padding="10dp"
+                android:text="Cloud Cover\n5:30am"
                 android:textColor="@android:color/white"
                 android:textSize="14sp" />
         </LinearLayout>
