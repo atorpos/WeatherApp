@@ -1,12 +1,14 @@
 package com.example.weatherapp
-
+import android.Manifest
 import android.annotation.SuppressLint
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import kotlinx.coroutines.CoroutineScope
@@ -16,6 +18,10 @@ import kotlinx.coroutines.withContext
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import android.widget.Toast
+import android.location.Location
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,6 +37,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var pollutionText: TextView
     private lateinit var updatedText: TextView
     private val apiKey = "7f32246536c77950b713bbdb6c5f2d74"  // Replace with your actual API key
+
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private val LOCATION_PERMISSION_REQUEST_CODE = 1001
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -54,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        getWeatherData("Brownsville")
+        getWeatherData("Toronto")
 //        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
 //            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
 //            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -72,7 +81,7 @@ class MainActivity : AppCompatActivity() {
                 withContext(Dispatchers.Main) {
                     val weatherResponse = response.body()
                     weatherResponse?.let {
-                        temperatureText.text = "${it.main.temp}°C"
+                        temperatureText.text = "${it.main.temp.toInt()}°C"
                         descriptionText.text = it.weather[0].description
                         minmaxTempText.text = "${it.main.tempMin}°C - ${it.main.tempMax}°C"
                         sunriseText.text = " Sunrise\n ${convertUnixTimestamp(it.sys.sunrise)}"
